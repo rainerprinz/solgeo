@@ -27,7 +27,7 @@ time_LT = time + minutes(LATd); % local apparent time
 hro = hour(time_LT)+minute(time_LT)/60; % decimal hours of LAT [h]
 omega = (hro-12).*deg2rad(15); % hour angle 0 = 12h LAT [h]
 latrad = deg2rad(lat);
-sunel = asin(sin(latrad).*sin(delta) + cos(latrad).*cos(delta).*cos(omega)); % sun elevation; complement angle to zenith angle
+sunel = asin(sin(latrad).*sin(delta) + cos(latrad).*cos(delta).*cos(omega)); % sun elevation; complement angle to zenith angle (= pi/2 - sunel)
 TOA = Io.*Eo.*sin(sunel); % Top of atmosphere radiation [rad]
 omegas = acos(tan(latrad)*-1.*tan(delta));
 omegas(omegas~=real(omegas)) = NaN;
