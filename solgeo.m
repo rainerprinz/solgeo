@@ -10,7 +10,7 @@ function [sunel,TOA,LOD] = solgeo(lat,lon,time,lsm)
     % lsm: local standard meridian (°), e.g. Vienna (GMT+1) = 15°, Toronto
     % (GMT-5) = -75°
 
-Io = 1362;  % solar constant, W/m²
+Io = 1362;  % solar constant [W/m²]
 doy = day(time,'dayofyear'); % day of year
 mn = minute(time);
 gamma = 2*pi*(doy-1)/365;      % Iqbal 1983 (1.2.2) day angle
@@ -28,7 +28,7 @@ hro = hour(time_LT)+minute(time_LT)/60; % decimal hours of LAT [h]
 omega = (hro-12).*deg2rad(15); % hour angle 0 = 12h LAT [h]
 latrad = deg2rad(lat);
 sunel = asin(sin(latrad).*sin(delta) + cos(latrad).*cos(delta).*cos(omega)); % sun elevation; complement angle to zenith angle (= pi/2 - sunel)
-TOA = Io.*Eo.*sin(sunel); % Top of atmosphere radiation [rad]
+TOA = Io.*Eo.*sin(sunel); % Top of atmosphere radiation [W/m²]
 omegas = acos(tan(latrad)*-1.*tan(delta));
 omegas(omegas~=real(omegas)) = NaN;
 LOD = 2/15.*rad2deg(omegas); % length of day [h]
