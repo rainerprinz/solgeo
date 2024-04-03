@@ -1,5 +1,5 @@
 function [sunel,TOA,LOD] = solgeo(lat,lon,time,lsm)
-% solgeo drives sun elevation (sunel) [rad], top of atmosphere radiation
+% solgeo derives sun elevation (sunel) [rad], top of atmosphere radiation
 %(TOA) [W/m²] and length of day (LOD) [h] from given input. TOA is in UTC,
 %not in local time
 % Rainer Prinz, 19 Jan 2022
