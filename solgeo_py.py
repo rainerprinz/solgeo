@@ -1,11 +1,11 @@
-# solgeo drives sun elevation (sunel) [rad], top of atmosphere radiation
+# solgeo derives sun elevation (sunel) [rad], top of atmosphere radiation
 #(TOA) [W/m²] and length of day (LOD) [h] from given input. TOA is in UTC,
 #not in local time
 # Rainer Prinz, 02 Apr 2024
 #   Input needed:
     # lat: latitude of location [dd.dddd]
     # lon: longitutde of location [dd.dddd]
-    # time: time vector as datetime (must include minutes)
+    # time: time vector as DatetimeIndex (must include minutes)
     # lsm: local standard meridian (°), e.g. Vienna (GMT+1) = 15°, Toronto
     # (GMT-5) = -75°
 
@@ -15,11 +15,10 @@ def solgeo(lat, lon, time, lsm):
     # Solar constant, W/m²
     Io = 1362  
     
-    # Extract day of year and minute from datetime
+    # Extract day of year from datetime
     doy = time.dayofyear
-    #mn = time.minute
-    
-    # Calculate day angle, Iqbal 1983 (1.2.2) day angle
+        
+    # Calculate day angle, Iqbal 1983 (1.2.2) 
     gamma = 2 * np.pi * (doy - 1) / 365   
     
     # Excentricity
@@ -35,7 +34,7 @@ def solgeo(lat, lon, time, lsm):
     Et = (0.000075 + 0.001868 * np.cos(gamma) - 0.032077 * np.sin(gamma) -
           0.014615 * np.cos(2 * gamma) - 0.04089 * np.sin(2 * gamma)) * 229.18  
     
-    # Difference to local apparent time, Iqbal 1983 (1.4.2) difference to local apparent time
+    # Difference to local apparent time, Iqbal 1983 (1.4.2) 
     LATd = Et + 4 * (lon - lsm)  
     
     # Local apparent time
