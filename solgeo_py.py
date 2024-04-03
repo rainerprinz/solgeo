@@ -9,6 +9,8 @@
     # lsm: local standard meridian (°), e.g. Vienna (GMT+1) = 15°, Toronto
     # (GMT-5) = -75°
 
+import numpy as np
+
 def solgeo(lat, lon, time, lsm):
     # Solar constant, W/m²
     Io = 1362  
