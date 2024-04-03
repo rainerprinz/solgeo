@@ -1,3 +1,14 @@
+# solgeo drives sun elevation (sunel) [rad], top of atmosphere radiation
+#(TOA) [W/m²] and length of day (LOD) [h] from given input. TOA is in UTC,
+#not in local time
+# Rainer Prinz, 02 Apr 2024
+#   Input needed:
+    # lat: latitude of location [dd.dddd]
+    # lon: longitutde of location [dd.dddd]
+    # time: time vector as datetime (must include minutes)
+    # lsm: local standard meridian (°), e.g. Vienna (GMT+1) = 15°, Toronto
+    # (GMT-5) = -75°
+
 def solgeo(lat, lon, time, lsm):
     # Solar constant, W/m²
     Io = 1362  
